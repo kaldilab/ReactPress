@@ -10,7 +10,6 @@ import * as GetAuth from 'utils/GetAuth';
 
 export default function MemeberLogin(props) {
 
-  const routeOrigin = GetRoute.RouteOrigin();
   const routeSlug = GetRoute.RouteSlug();
   const routeState = GetRoute.RouteState();
   const gotoFrom = (routeState) ? routeState.from : GetMenu.MenuUrl('user');
@@ -81,9 +80,7 @@ export default function MemeberLogin(props) {
 
   return (
     <React.Fragment>
-      <h3 className="mb-5">
-        {GetMenu.MenuLabel(routeOrigin)} <small>{GetMenu.MenuLabel(routeSlug)}</small>
-      </h3>
+      <h3 className="mb-5">{GetMenu.MenuLabel(routeSlug)}</h3>
       <Section sectionClass={'section'} srTitle={GetMenu.MenuLabel(routeSlug)}>
         <Form.CTForm
           formClass={'w-50 mx-auto pt-3'}
