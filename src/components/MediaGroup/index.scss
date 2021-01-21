@@ -1,0 +1,10 @@
+.media {
+  &-figure {
+    width: 5rem;
+    height: 5rem;
+    overflow: hidden;
+  }
+  &-image {
+    @include object-fit;
+  }
+}

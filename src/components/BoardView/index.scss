@@ -1,0 +1,57 @@
+.view {
+  &-head {
+    position: relative;
+    padding: 1rem 0;
+  }
+  &-title {
+    @extend .h3;
+  }
+  &-category {
+    @extend .h4;
+    color: $secondary;
+  }
+  &-date {
+    @extend .h5;
+    color: $gray5;
+  }
+  &-author {
+    @extend .h5;
+  }
+  &-tag {
+    @extend .h6;
+    color: $gray5;
+    span {
+      display: inline-block;
+      border: 1px solid $gray3;
+      padding: 4px 8px;
+      margin-right: 8px;
+    }
+  }
+  &-visual {
+    padding: 2rem 0;
+    border-top: 1px solid $gray3;
+  }
+  &-figure {
+    text-align: center;
+    img {
+      max-width: 100%;
+    }
+  }
+  &-body {
+    padding: 2rem 0;
+    border-top: 1px solid $gray3;
+  }
+  &-content {
+    img {
+      max-width: 100%;
+    }
+  }
+  &-foot {
+    padding: 2rem 0;
+    border-top: 1px solid $gray3;
+  }
+  &-goto {
+    padding-top: 2rem;
+    text-align: center;
+  }
+}
