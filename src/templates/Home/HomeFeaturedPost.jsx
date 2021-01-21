@@ -95,11 +95,12 @@ export default function HomeFeaturedPost(props) {
                 featuredPost
                   .map((item, index) => {
                     const getEmbedded = item._embedded;
+                    const getTerm = 'wp:term' in getEmbedded;
                     const getLink = GetMenu.MenuUrl(GetUtils.GetEmbed(getEmbedded, 'category')[0].slug);
                     return (
                       <ListDeck.CTListDeckItem
                         key={index}
-                        category={GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ')}
+                        category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ') : ''}
                         link={getLink + '/_view/' + item.id}
                         title={GetUtils.GetEllipsis(item.title.rendered, 20, '')}
                         excerpt={GetUtils.GetEllipsis(GetUtils.GetMarkupRemove(item.excerpt.rendered), 50, '')}
@@ -126,13 +127,14 @@ export default function HomeFeaturedPost(props) {
                 featuredPost
                   .map((item, index) => {
                     const getEmbedded = item._embedded;
+                    const getTerm = 'wp:term' in getEmbedded;
                     const getLink = GetMenu.MenuUrl(GetUtils.GetEmbed(getEmbedded, 'category')[0].slug);
                     return (
                       <CardDeck.CTCardDeckItem
                         key={index}
                         col={props.col}
                         image={GetUtils.GetEmbed(getEmbedded, 'image')}
-                        category={GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ')}
+                        category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ') : ''}
                         link={getLink + '/_view/' + item.id}
                         title={GetUtils.GetEllipsis(item.title.rendered, 20, '')}
                         excerpt={GetUtils.GetEllipsis(GetUtils.GetMarkupRemove(item.excerpt.rendered), 70, '')}
@@ -159,12 +161,13 @@ export default function HomeFeaturedPost(props) {
                 featuredPost
                   .map((item, index) => {
                     const getEmbedded = item._embedded;
+                    const getTerm = 'wp:term' in getEmbedded;
                     const getLink = GetMenu.MenuUrl(GetUtils.GetEmbed(getEmbedded, 'category')[0].slug);
                     return (
                       <Slider.CTSliderItem
                         key={index}
                         image={GetUtils.GetEmbed(getEmbedded, 'image')}
-                        category={GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ')}
+                        category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ') : ''}
                         link={getLink + '/_view/' + item.id}
                         title={GetUtils.GetEllipsis(item.title.rendered, 20, '')}
                         excerpt={GetUtils.GetEllipsis(GetUtils.GetMarkupRemove(item.excerpt.rendered), 50, '')}

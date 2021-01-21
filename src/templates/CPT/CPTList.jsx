@@ -141,11 +141,12 @@ export default function CPTList(props) {
                   postsAll
                     .map((item, index) => {
                       const getEmbedded = item._embedded;
+                      const getTerm = 'wp:term' in getEmbedded;
                       return (
                         <BoardTable.CTBoardTableItem
                           key={index}
                           order={(postsAllTotal - ((postsCurrentPage - 1) * postsPerPage)) - index}
-                          category={GetUtils.GetEmbed(getEmbedded, 'category', 'cpt').map(item => item.name).join(' / ')}
+                          category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category', 'cpt').map(item => item.name).join(' / ') : ''}
                           link={routeUrl + '/_cpt_view/' + item.id + routeSearch}
                           title={GetUtils.GetEllipsis(item.title.rendered, 80, '')}
                           date={GetDate.FormatDate(item.date)}
@@ -175,12 +176,13 @@ export default function CPTList(props) {
                   postsAll
                     .map((item, index) => {
                       const getEmbedded = item._embedded;
+                      const getTerm = 'wp:term' in getEmbedded;
                       return (
                         <BoardCard.CTBoardCardItem
                           key={index}
                           col={props.col}
                           image={GetUtils.GetEmbed(getEmbedded, 'image', 'cpt')}
-                          category={GetUtils.GetEmbed(getEmbedded, 'category', 'cpt').map(item => item.name).join(' / ')}
+                          category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category', 'cpt').map(item => item.name).join(' / ') : ''}
                           link={routeUrl + '/_cpt_view/' + item.id + routeSearch}
                           title={GetUtils.GetEllipsis(item.title.rendered, 10, '')}
                           excerpt={GetUtils.GetEllipsis(GetUtils.GetMarkupRemove(item.excerpt.rendered), 70, '')}

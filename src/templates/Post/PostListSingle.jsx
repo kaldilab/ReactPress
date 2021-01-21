@@ -197,11 +197,12 @@ export default function PostListSingle(props) {
               postsSticky
                 .map((item, index) => {
                   const getEmbedded = item._embedded;
+                  const getTerm = 'wp:term' in getEmbedded;
                   return (
                     <BoardTable.CTBoardTableItemSticky
                       key={index}
                       sticky={'Pin'}
-                      category={GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ')}
+                      category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ') : ''}
                       link={routeUrl + '/_view/' + item.id + routeSearch}
                       title={GetUtils.GetEllipsis(item.title.rendered, 80, '')}
                       date={GetDate.FormatDate(item.date)}
@@ -219,11 +220,12 @@ export default function PostListSingle(props) {
                   postsAll
                     .map((item, index) => {
                       const getEmbedded = item._embedded;
+                      const getTerm = 'wp:term' in getEmbedded;
                       return (
                         <BoardTable.CTBoardTableItem
                           key={index}
                           order={(postsAllTotal - ((postsCurrentPage - 1) * postsPerPage)) - index}
-                          category={GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ')}
+                          category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ') : ''}
                           link={routeUrl + '/_view/' + item.id + routeSearch}
                           title={GetUtils.GetEllipsis(item.title.rendered, 80, '')}
                           date={GetDate.FormatDate(item.date)}
@@ -253,12 +255,13 @@ export default function PostListSingle(props) {
                   postsAll
                     .map((item, index) => {
                       const getEmbedded = item._embedded;
+                      const getTerm = 'wp:term' in getEmbedded;
                       return (
                         <BoardCard.CTBoardCardItem
                           key={index}
                           col={props.col}
                           image={GetUtils.GetEmbed(getEmbedded, 'image')}
-                          category={GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ')}
+                          category={(getTerm) ? GetUtils.GetEmbed(getEmbedded, 'category').map(item => item.name).join(' / ') : ''}
                           link={routeUrl + '/_view/' + item.id + routeSearch}
                           title={GetUtils.GetEllipsis(item.title.rendered, 10, '')}
                           excerpt={GetUtils.GetEllipsis(GetUtils.GetMarkupRemove(item.excerpt.rendered), 70, '')}
