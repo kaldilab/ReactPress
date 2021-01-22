@@ -34,7 +34,7 @@ export function CTBoardTableItem(props) {
       <tr>
         <td>{props.order}</td>
         <td>
-          <Link to={props.link}>{(props.category) ? '<span>[' + props.category + ']</span> ' : ''}{props.title}</Link>
+          <Link to={props.link}><span>{(props.category) ? `[${props.category}]` : ''}</span> {props.title}</Link>
         </td>
         <td>{props.date}</td>
       </tr>
@@ -48,7 +48,7 @@ export function CTBoardTableItemSticky(props) {
       <tr>
         <th>{props.sticky}</th>
         <th>
-        <Link to={props.link}>{(props.category) ? '<span>[' + props.category + ']</span> ' : ''}{props.title}</Link>
+        <Link to={props.link}><span>{(props.category) ? `[${props.category}]` : ''}</span> {props.title}</Link>
         </th>
         <th>{props.date}</th>
       </tr>
