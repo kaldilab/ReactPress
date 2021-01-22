@@ -9,7 +9,6 @@ import * as GetMenu from 'utils/GetMenu';
 export default function PostAdd(props) {
 
   const isMounted = useRef(false);
-  const routeOrigin = GetRoute.RouteOrigin();
   const routeSlug = GetRoute.RouteSlug('last', 2);
   const gotoView = GetRoute.RouteUrl().replace('_add', '_view/');
   const [postTitle, setPostTitle] = useState([]);
@@ -84,9 +83,7 @@ export default function PostAdd(props) {
 
   return (
     <React.Fragment>
-      <h3 className="mb-5">
-        {GetMenu.MenuLabel(routeOrigin)} <small>{GetMenu.MenuLabel(routeSlug)}</small> - 쓰기
-      </h3>
+      <h3 className="mb-5">{GetMenu.MenuLabel(routeSlug)}</h3>
       <Section sectionClass={'section'} srTitle={GetMenu.MenuLabel(routeSlug)}>
         <Form.CTForm
           formClass={'w-75 mx-auto pt-3'}

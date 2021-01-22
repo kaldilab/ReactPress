@@ -61,10 +61,7 @@ export default function CPTView(props) {
               GetStorage.UseSessionStore(storeKey, response, setResponse);
             }
           })
-          .catch(error => {
-            console.log(error);
-            (error.data.status === 404) && GetUtils.GetGoto('/notfound');
-          });
+          .catch(error => console.log(error));
       }
       GetStorage.CallSessionStorePost(storeKey, setResponse, getPosts, PostId);
       return () => {
@@ -81,10 +78,10 @@ export default function CPTView(props) {
         <BoardView.CTBoardView>
           <BoardView.CTBoardViewHead
             title={postTitle}
-            category={postCategory.map(item => item.name).join(' / ')}
+            category={(postCategory) ? postCategory.map(item => item.name).join(' / ') : ''}
             date={postDate}
             author={postAuthor}
-            tag={postTag.map((item, index) => { return <span key={index}>{item.name}</span> })}
+            tag={(postTag) ? postTag.map((item, index) => { return <span key={index}>{item.name}</span> }) : ''}
           />
           {
             (postFeaturedImage)

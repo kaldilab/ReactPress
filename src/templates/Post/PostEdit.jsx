@@ -10,7 +10,6 @@ import * as GetMenu from 'utils/GetMenu';
 export default function PostEdit(props) {
 
   const isMounted = useRef(false);
-  const routeOrigin = GetRoute.RouteOrigin();
   const routeSlug = GetRoute.RouteSlug('last', 2);
   const routeUrlReplace = GetRoute.RouteUrl().replace(/\//gi, '_');
   const gotoView = GetRoute.RouteUrl().replace('_edit', '_view');
@@ -87,9 +86,7 @@ export default function PostEdit(props) {
 
   return (
     <React.Fragment>
-      <h3 className="mb-5">
-        {GetMenu.MenuLabel(routeOrigin)} <small>{GetMenu.MenuLabel(routeSlug)}</small> - 수정
-      </h3>
+      <h3 className="mb-5">{GetMenu.MenuLabel(routeSlug)}</h3>
       <Section loading={isLoadingSection} sectionClass={'section'} srTitle={GetMenu.MenuLabel(routeSlug)}>
         <Form.CTForm
           formClass={'w-75 mx-auto pt-3'}

@@ -85,17 +85,15 @@ export default function PostView(props) {
 
   return (
     <React.Fragment>
-      <h3 className="mb-5">
-        {GetMenu.MenuLabel(routeSlug)}
-      </h3>
+      <h3 className="mb-5">{GetMenu.MenuLabel(routeSlug)}</h3>
       <Section loading={isLoadingSection} sectionClass={'section'}>
         <BoardView.CTBoardView>
           <BoardView.CTBoardViewHead
             title={postTitle}
-            category={postCategory.map(item => item.name).join(' / ')}
+            category={(postCategory) ? postCategory.map(item => item.name).join(' / ') : ''}
             date={postDate}
             author={postAuthor}
-            tag={postTag.map((item, index) => { return <span key={index}>{item.name}</span> })}
+            tag={(postTag) ? postTag.map((item, index) => { return <span key={index}>{item.name}</span> }) : ''}
           />
           <BoardView.CTBoardViewVisual
             url={postFeaturedImage}
